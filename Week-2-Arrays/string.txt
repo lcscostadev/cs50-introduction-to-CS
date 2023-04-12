@@ -1,0 +1,53 @@
+array of strings 
+
+ H    i    !    \0
+s[0] s[1] s[2] s[4]
+
+must always contain this \0 at the end of strings so we have 4 bytes even if we typed 3 characters that represents total of 3.
+
+1 - use Vite to display our project
+2 - On App component, we are going to use the useState to create 2 things, the values State that it will update our values of each bar and a swappingBars state that will update the current bar that will be swapped in our bubble sort algorithm
+3 - we are going to create a component called BarList, lets just boilerplate and import it to the App component and display it on App, we pass props of values and swappingBars so we can deal with our array of values and organize it on a list of Bars that we are going to create.
+4 - on BarList we are going to use this props to display a map on values with the value and index and each value will contain a Bar component, firs we create a const isSwapping and store swappingBars.includes(index) 
+and then we can return a Bar component with the props of value and isSwapping also add a key={index}, make sure to import Bar and also create a barList.css to display flex, also make sure that the container div is called bar-list
+5 - create the Bar component, it will contain the props of value and isSwapping so make sure you put it at the parameters. we are going to create a const className that will have a ternary operator to show visually the bars that is swapping:
+    const className = `bar${isSwapping ? ' bar--swapping' : ''}`;
+
+and now you add a div passing this className as props and a style that adds height passing the value props added with pixels:
+        <div className={className} style={{ height: `${value}px` }}></div>
+
+6 - create a Bar.css file and import on bar, on bar.css we are going to set a width on bar, his color and margin, and also if we want to visualise the animation of swap we can create a bar--swapping and change his background color
+
+7 - now things get interesting, first we want an initial value, an initial list of values, and to be more interesting we can create a function that will display it randomly each time we fire some button, add useEffect at the top of our App component and create the boilerplate of useEffect. inside the useEffect we are going to create a variable called initialValues that is calling our future function generateRandValues with the initial parameter of values(bars) that we want in our project, and then of course we setValues(initialValues)
+
+8 - now lets create this function, we know that is a formula to render randomly some values, we also know that values can update so we can initialize him as an empty array so we loop through the length parameter that we are going to add in this function so we can push a random value
+
+const generateRandValues = (length) => {
+    const values = [];
+    for (let i = 0; i < length; i++) {
+      values.push(Math.floor(Math.random() * 100) + 1);
+    }
+    return values;
+  }
+
+  and of course if we want this to work we need to assign to a button onClick with the value of length that we want to display it
+<button onClick={() => setValues(generateRandValues(50))}>Generate Random Values</button>
+
+pass this to the App.css just to have it displayed at the middle of the screen
+
+body {
+  background-color: #242424;
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+9 - just to finish things add the button
+
+        <button onClick={handleSort}>Sort</button>
+and also the algorithm
+
+and you completed the challenge!

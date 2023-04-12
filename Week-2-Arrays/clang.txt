@@ -1,0 +1,24 @@
+clang compiler -> make hello
+
+clang -o hello hello.c
+
+.out -> assembler output
+
+clang - o hello hello.c -lcs50
+
+
+4 Process of compiling:
+
+- preprocessing #include <stdio.h> -> /usr/include
+under the hood it would be like this:
+string get_string(string prompt); -> #include <cs50.h>
+int printf(string format, ...); -> #include <stdio.h>
+
+- compiling -> to assembly
+
+- assembling -> 0's and 1's
+
+- linking -> grab 0's and 1's from, cs50, stdio, and your code, and combining everything
+
+
+decompiling - 
