@@ -1,0 +1,75 @@
+we want to write a program that check 2 string user inputs and compares then to each other, the user who has more points depending of the points each letter represents, wins. it also can be a tie.
+
+1 - we are going to create 2 functions the main who's gonna store the input, score and condition to see which player has more points.
+2 - get the user input for both players to type a word
+3 - store the word in a function that will compute if the letter is on the lower case alphabet or on the uppercase alphabet and check if it is a space or a punctuation.
+4 - we store that function word passed to the main function in a score1 and score2 for our players, which player that has the bigger score wins.
+5 - at the compute score function we first store the length of the word string in a 'n' variable.
+6 - we need to create a score variable to sum points depending on the letter the player chooses.
+7 - we need a basic loop to iterate the 'n' AKA length of the word.
+8 - inside the loop, we create a variable c to store each character of of the word.
+9 - we create an if statement to check if c >= 'a' && c <= 'z', which means that we are inside the lowercase alphabet
+10 - we will do the same thing for the uppercase alphabet.
+11 - we sum score += POINTS[c - 'a']; -> we basically have our current character c that can be anything, lets say the letter 'd', so we subtract c to 'a' to get the index position of the 'd' letter
+12 - we create an if statment that checkes if the current word is a punctuation or a space, if it is, we dont add any points to the user, so we return 0;
+13 - we just return the score to use it in the main function.
+
+
+
+CODE:
+
+#include <ctype.h>
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+// Points assigned to each letter of the alphabet
+int POINTS[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+
+int compute_score(string word);
+
+int main(void)
+{
+    // Get input words from both players
+    string word1 = get_string("Player 1: ");
+    string word2 = get_string("Player 2: ");
+
+    // Score both words
+    int score1 = compute_score(word1);
+    int score2 = compute_score(word2);
+
+    // TODO: Print the winner
+    if(score1 > score2) {
+        printf("Player 1 won\n");
+    } else if (score1 < score2) {
+        printf("Player 2 won\n");
+    } else {
+        printf("Its a tie");
+    }
+}
+
+int compute_score(string word)
+{
+    int n = strlen(word);
+    int score = 0;
+    // TODO: Compute and return score for string
+    // we iterate through the word storing each letter in a variable c
+    for(int i = 0; i < n; i++) {
+        char c = word[i];
+        // checking if the letter is on the lowercase alphabet
+        if(c >= 'a' && c <= 'z'){
+            score += POINTS[c - 'a'];
+        // checking if the letter is on the uppercase alphabet
+        } else if (c >= 'A' && c <= 'Z') {
+            score += POINTS[c - 'A'];
+        }
+
+    // checking if the user types space or punctuation it doesnt earn points for that
+        if(ispunct(word[i]) || isspace(word[i])) {
+            return 0;
+        }
+    }
+    return score;
+}
+
+

@@ -1,0 +1,15 @@
+// Preps:
+	1. Read the question.
+	2. Read the code.
+
+// Goal:
+
+// Parameters (input):
+
+// Results (output): 
+	
+// Examples (what they want to come out of the problem):
+	
+// Pseudocode (Talking about how this might be solve):
+	
+// Better thinking toughts:

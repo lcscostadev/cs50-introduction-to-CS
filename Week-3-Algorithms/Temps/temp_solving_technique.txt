@@ -1,0 +1,40 @@
+// Preps:
+	1. Read the question.
+	2. Read the code.
+
+// Goal:
+	sort 
+		the average 
+		high temperature values 
+	for 10 cities in 
+		decending order:
+
+// Parameters (input):
+	No inputs for this one.
+
+// Results (output): 
+	The program prints the average temperature of 10 cities in descending order based on temperature.
+
+// Examples (what they want to come out of the problem):
+	Average July Temperatures by City:
+
+	Phoenix: 107
+	Las Vegas: 105
+	Austin: 97
+	Miami: 97
+	Denver: 90
+	Chicago: 85
+	New York: 85
+	Boston: 82
+	Los Angeles: 82
+	San Francisco: 66
+
+// Pseudocode (Talking about how this might be solve):
+	Declare a struct "avg_temp" with two members, "city" and "temp".
+	Declare an array "temps" of "avg_temp" struct type with a size of 10.
+	Assign the city and temperature values of 10 different cities to the "temps" array.
+	Define a function "sort_cities()" to sort the "temps" array in descending order based on temperature.
+	Inside the "sort_cities()" function, use nested loops to compare the temperature of each city with the temperature of the next city in the array.
+	If the temperature of the current city is less than the temperature of the next city, swap the positions of the two cities in the array.
+	Print the sorted list of cities and their temperatures in descending order.
+
